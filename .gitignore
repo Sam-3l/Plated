@@ -1,0 +1,42 @@
+# Backend - Django
+*.pyc
+__pycache__/
+.env
+db.sqlite3
+/Backend/staticfiles/
+/Backend/media/
+/Backend/.venv/          # If using a virtual environment inside Backend folder
+
+# Frontend - React
+node_modules/
+build/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Tailwind CSS
+*.css.map                 # Ignore source map files from Tailwind
+tailwind.config.js        # Keep config files, but not generated output if unnecessary
+
+# General
+.DS_Store
+*.log
+.idea/                   # JetBrains IDEs
+.vscode/                 # Visual Studio Code
+*.sublime-project
+*.sublime-workspace
+*.swp                    # Swap files
+*.lock
+coverage/                # Test coverage reports
+Thumbs.db                # Windows thumbnails
+desktop.ini              # Windows desktop file
+
+# MacOS
+*.DS_Store
+
+# Temporary files
+*.tmp
