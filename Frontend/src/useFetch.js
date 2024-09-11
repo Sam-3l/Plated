@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useFetch = (url, request=null) => {
+const useFetch = (url) => {
 
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -10,7 +10,9 @@ const useFetch = (url, request=null) => {
         setTimeout(() => {
             fetch(url) 
             .then(response => {
-                console.log(response);
+                if (!response.ok){
+                    throw Error("could not fetch data")
+                }
                 return response.json();
             })
             .then(data => {
@@ -18,8 +20,7 @@ const useFetch = (url, request=null) => {
                 setIsLoading(false);
             })
             .catch(err => {
-                console.log(err);
-                setErrors(err);
+                setErrors(err.message);
                 setIsLoading(false);
             })
         }, 1000);

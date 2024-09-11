@@ -1,25 +1,34 @@
 import './App.css';
-import useFetch from "./useFetch";
+import RecipesList from './RecipesList';
+import Navbar from './Navbar';
+import Home from './Home';
+import CreateRecipe from './CreateRecipe';
+import RecipeDetails from './RecipeDetails';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
-  const { data:recipes, isLoading, errors} = useFetch("http://127.0.0.1:8000/api/");
-
-  console.log(recipes)
-
   return (
-    <div className="App">
-      <div className="content">
-        {isLoading && <div>Loading...</div>}
-        {recipes && recipes.map(recipe => {
-          <div key={recipe.id}>
-            <ul>
-              <li>{recipe.name}</li>
-            </ul>
-          </div>
-        })}
-        {errors && <span>{errors}</span>}
-      </div>      
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className='content p-10 bg-blue-500'>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/recipes">
+              <RecipesList />
+            </Route>
+            <Route path="/recipes/new">
+              <CreateRecipe />
+            </Route>
+            <Route path="/recipes/:id">
+              <RecipeDetails />
+            </Route>
+          </Switch>
+        </div>    
+      </div>
+    </Router>
   );
 }
 

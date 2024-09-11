@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Recipe(models.Model):
     name = models.CharField(max_length=150, null=False)
     description = models.TextField(max_length=260, null=False)
@@ -10,4 +11,3 @@ class Recipe(models.Model):
 
     class Meta:
         db_table = "recipe"
-
