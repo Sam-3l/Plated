@@ -1,0 +1,3 @@
+Not authenticating email - only username
+Not validating email - on register --resolved
+Not saving first_name - on register --resolved

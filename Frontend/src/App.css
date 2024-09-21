@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.input{
+    @apply block p-2 mt-1 mb-2 rounded w-full border-blue-800 border border-opacity-20;
+}
+
+.btn{
+    @apply bg-blue-800 p-2 rounded text-white text-center cursor-pointer hover:bg-blue-700 transition ease-in-out duration-500;
+}
+
+.error{
+    @apply w-full bg-red-200 p-4 my-4 text-center border-red-300 border rounded-md shadow-md;
+}

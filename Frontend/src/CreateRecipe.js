@@ -45,7 +45,7 @@ const CreateRecipe = () => {
             <span className="font-bold text-4xl text-blue-950">Create New Recipe</span>
             <form className="p-4" onSubmit={e => handleSubmit(e)}>
                 <div>
-                    <label htmlFor="name" className="font-semibold">Input Recipe Name:</label>
+                    <label htmlFor="name" className="font-semibold text-lg">Input Recipe Name:</label>
                     <p><input type="text"
                             className="p-2 w-96 rounded" 
                             id="name" 
@@ -55,7 +55,7 @@ const CreateRecipe = () => {
                     /></p>
                 </div>
                 <div>
-                    <label htmlFor="description" className="font-semibold">Describe Your Recipe:</label>
+                    <label htmlFor="description" className="font-semibold text-lg">Describe Your Recipe:</label>
                     <p><textarea type="text"
                         id="description" 
                         className="p-3 h-28 w-96 rounded"

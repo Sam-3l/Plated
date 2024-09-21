@@ -5,13 +5,14 @@ import Home from './Home';
 import CreateRecipe from './CreateRecipe';
 import RecipeDetails from './RecipeDetails';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Register from './Register';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Navbar />
-        <div className='content p-10 bg-blue-500'>
+        <div className='content bg-slate-100'>
           <Switch>
             <Route exact path="/">
               <Home />
@@ -24,6 +25,9 @@ function App() {
             </Route>
             <Route path="/recipes/:id">
               <RecipeDetails />
+            </Route>
+            <Route path="/register">
+              <Register />
             </Route>
           </Switch>
         </div>    
