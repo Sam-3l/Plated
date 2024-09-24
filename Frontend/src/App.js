@@ -26,7 +26,7 @@ function App() {
             <Route path="/recipes/:id">
               <RecipeDetails />
             </Route>
-            <Route path="/register">
+            <Route exact path="/register">
               <Register />
             </Route>
           </Switch>

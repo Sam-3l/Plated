@@ -7,7 +7,7 @@ class User(AbstractUser, PermissionsMixin):
     bio = models.TextField(null=True)
 
     def __str__(self) -> str:
-        return f"<User {self.first_name}>"
+        return f"<User {self.username}>"
 
     class Meta:
         db_table = "user"
