@@ -166,3 +166,5 @@ class PublicUserViewSet(viewsets.ModelViewSet):
         else:
             user.followers.add(auth_user)
             return Response({'detail': f'{user.username} followed'}, status=status.HTTP_201_CREATED)
+        
+    # next tomorrow
