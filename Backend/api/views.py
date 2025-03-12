@@ -146,7 +146,7 @@ class RatingsAndReviewsViewset(viewsets.ModelViewSet):
 class PublicUserViewSet(viewsets.ModelViewSet):
     """
     Public user viewset for public profile view and follow.
-    Assessible to all users but only authenticated users can follow/unfollow
+    Assessible to all users but only authenticated users can follow/unfollow.
     """
     queryset = User.objects.all()
     serializer_class = PublicUserSerializer
@@ -167,4 +167,25 @@ class PublicUserViewSet(viewsets.ModelViewSet):
             user.followers.add(auth_user)
             return Response({'detail': f'{user.username} followed'}, status=status.HTTP_201_CREATED)
 
-    # followers and followings
+    @action(methods=['get',], detail=True, permission_classes=[AllowAny,])
+    def followers(self, request):
+        """
+        View to get list of a user's followers.
+        Anyone can access this.
+        """
+        user = self.get_object()
+        followers = User.objects.filter(following=user)
+        serializer = PublicUserSerializer(followers, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @action(methods=['get',], detail=True, permission_classes=[AllowAny,])
+    def following(self, request):
+        """
+        View to get list of a user's following => All the users the queried user is following.
+        Anyone can access this.
+        """
+        user = self.get_object()
+        following = User.objects.filter(followers=user)
+        serializer = PublicUserSerializer(following, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
