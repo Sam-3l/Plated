@@ -42,6 +42,8 @@ class Recipe(models.Model):
     difficulty = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES, default="Medium")
     created_at = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
+    viewers = models.ManyToManyField(User, related_name='viewed_recipes', blank=True)
+    views = models.PositiveIntegerField(default=0)
     saved_by = models.ManyToManyField(User, related_name='saved_recipes', blank=True)
     saves = models.PositiveIntegerField(default=0)
     reviewed_by = models.ManyToManyField(User, through='RecipeRatingsAndReviews', related_name='recipe_reviews')
@@ -72,4 +74,12 @@ class RecipeRatingsAndReviews(models.Model):
         db_table = "recipe_ratings_and_reviews"
 
     def __str__(self):
-        return f'{self.user.username} on -> {self.recipe.name}'
+        return f'{self.user.username}\'s review on -> {self.recipe.name}'
+    
+class RecipeViews(models.Model):
+    """
+    Intermediate / Through model connecting Recipe and User model for ratings and reviews
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    date_viewed = models.DateTimeField(auto_now_add=True)

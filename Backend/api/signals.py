@@ -40,3 +40,6 @@ def update_following(sender, instance, action, **kwargs):
     if action in ['post_add', 'post_remove', 'post_clear']:
         instance.following_count = instance.following.count()
         instance.save()
+
+def update_views():
+    pass
