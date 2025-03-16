@@ -191,3 +191,5 @@ class PublicUserViewSet(viewsets.ModelViewSet):
 
 # testing and debugging next
 # docker configs
+# I'm lazy today again
+# motivation....? 
