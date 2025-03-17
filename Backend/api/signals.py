@@ -43,3 +43,5 @@ def update_following(sender, instance, action, **kwargs):
 
 def update_views():
     pass
+
+# Add signals for recipe views. then views for all that.
