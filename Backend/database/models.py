@@ -42,10 +42,11 @@ class Recipe(models.Model):
     difficulty = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES, default="Medium")
     created_at = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
-    viewers = models.ManyToManyField(User, related_name='viewed_recipes', blank=True)
-    views = models.PositiveIntegerField(default=0)
     saved_by = models.ManyToManyField(User, related_name='saved_recipes', blank=True)
     saves = models.PositiveIntegerField(default=0)
+    viewers = models.ManyToManyField(User, through='RecipeViews', related_name='viewed_recipes')
+    views = models.PositiveIntegerField(default=0)
+    cooks = models.PositiveIntegerField(default=0)
     reviewed_by = models.ManyToManyField(User, through='RecipeRatingsAndReviews', related_name='recipe_reviews')
     rating = models.DecimalField(max_digits=2, decimal_places=1, default=0, help_text="Rating from 0.0 to 5.0")
     # NOTE: rating and likes are read only fields, they can't be modified by anyone
@@ -83,3 +84,4 @@ class RecipeViews(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     date_viewed = models.DateTimeField(auto_now_add=True)
+    cooked = models.BooleanField(default=False)
