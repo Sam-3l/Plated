@@ -1,0 +1,18 @@
+# Node modules
+node_modules/
+build/
+dist/
+
+# Environment variables
+.env
+
+# Docker-related files
+.dockerignore
+Dockerfile
+
+# Git & editor files
+.git
+.gitignore
+*.swp
+.idea/
+.vscode/
